@@ -9,7 +9,7 @@ else:
 
 setup(
     name="aiobloom_live",
-    version="0.1.0",
+    version="0.1.1",
     author="ASXE",
     author_email="2973918177@qq.com",
     description="An async bloom filter library for Python.",
