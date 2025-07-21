@@ -1,26 +1,11 @@
 from setuptools import setup, find_packages
-import requests
 import os
 
-
-# 将markdown格式转换为rst格式
-def md_to_rst(from_file, to_file):
-    r = requests.post(url='http://c.docverter.com/convert',
-                      data={'to': 'rst', 'from': 'markdown'},
-                      files={'input_files[]': open(from_file, 'rb')})
-    if r.ok:
-        with open(to_file, "wb") as f:
-            f.write(r.content)
-
-md_to_rst("README.md", "README.rst")
-
-if os.path.exists('README.rst'):
-    with open("README.rst", "r", encoding="utf-8") as fh:
+if os.path.exists('README.md'):
+    with open("README.md", "r", encoding="utf-8") as fh:
         long_description = fh.read()
 else:
     long_description = 'An async bloom filter library for Python.'
-
-
 
 setup(
     name="aiobloom_live",
@@ -29,7 +14,7 @@ setup(
     author_email="2973918177@qq.com",
     description="An async bloom filter library for Python.",
     long_description=long_description,
-    long_description_content_type="text/x-rst",
+    long_description_content_type="text/markdown",
     url="https://github.com/asxez/aiobloom_live",
     packages=find_packages(),
     classifiers=[
@@ -42,6 +27,8 @@ setup(
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
         "Topic :: Utilities",
     ],
     python_requires='>=3.7',
